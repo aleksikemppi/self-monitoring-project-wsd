@@ -1,0 +1,46 @@
+<%- include('./partials/header.ejs') %>
+<h2 class="landing" align="center">Landing page</h2>
+<div class="form" id="purpose" align='center'>
+    <h3>What the web application does</h3>
+    <p>Web application monitors users in their daily behavior.</p>
+    <p>Application offers the following features:</p>
+    <ul>
+        <li align="center">Sleep duration and sleep quality</li>
+        <li>Time spent on sports and exercise</li>
+        <li>Time spent studying</li>
+        <li>Regularity and quality of eating</li>
+        <li>Generic mood</li>
+    </ul>
+</div>
+<center id="glimpse">
+<h3>Glimpse at the data:</h3>
+<table class="form" align="center">
+    <tbody>
+        <tr>
+            <th>Average mood yesterday : <div class="mood"><%= ymood %></div></th>
+        </tr>
+        <tr><th><p></p></th></tr>
+        <tr>
+            <th>Average mood today : <div class="mood"><%= moodt %></div></th>
+        </tr>
+        <tr><th><p></p></th></tr>
+        <tr>
+            <th>Tip : <div class="mood"><%= info %></div></th>
+        </tr>
+        <tr>
+            <% if (ydata) { %>
+            <th><div class="mood"><%= ydata %></div></th>
+            <% } %>
+        </tr>
+        <tr>
+            <% if (nydata) { %>
+            <th><div class="mood"><%= day1nul %></div></th>
+            <% } %>
+        </tr>
+</table>
+    <p></p>
+    <div class="mood"><form method="GET" action="/auth/registration"><input type="submit" value="Register" style="width:120px"/></form></div>
+    <div class="mood"><form method="GET" action="/auth/login"><input type="submit" value="Login" style="width:120px"/></form></div>
+    <div class="register"><form method="GET" action="/behavior/reporting"><input type="submit" value="Report" /></form></div>
+</center>
+<%- include('./partials/footer.ejs') %>

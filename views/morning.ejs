@@ -1,0 +1,31 @@
+<%- include('./partials/header.ejs') %>
+<h2 class="morning">Morning</h2>
+<center class="morningreport">
+<p></p>
+<p>Good morning! How did you sleep?</p>
+<p></p>
+<form method="POST" action="/behavior/reportingmorning">
+    <table align="center">
+        <tr align="center">
+        <th>Date : <div class="register"><input type="date" name="date" value="<%= date %>" /></div></th>
+        </tr>
+        <tr align="center">
+        <th>Sleep duration(can be decimal also)<div class="register"><input type="text" name="sleepduration" min="0" max="24" step="0.1" required="true" value="<%= sleepduration %>"  /></div></th>
+        </tr>
+        <tr align="center">
+        <th>Sleep quality from 1-5  <div class="register"><input type="text" name="sleepquality" min="1" max="5" step="1" value="<%= sleepquality %>" onchange="rangeinput.value=value"/></div>  <div class="register"><output id="rangeinput"></output></div></th>
+        </tr>
+        <tr align="center">
+        <th>sleep quality from 1-5 <div class="register"><input type="text" name="mgenericmood" min="1" max="5" step="1" value="<%= mgenericmood %>" onchange="rangevalue.value=value"/></div>  <div class="register"><output id="rangevalue"></output></div></th>
+        </tr>
+        <tr align="center"><th><input type="submit" value="Submit" /></th></tr>
+    </table>
+</form>
+<p></p>
+<div class="register"><form method="GET" action="/behavior/reporting"><input type="submit" value="Report" /></form></div>
+<div class="register"><form method="GET" action="/behavior/summary"><input type="submit" value="Summary"/></form></div>
+<div class="mood"><form method="GET" action="/landing"><input type="submit" value="Landing page" /></form></div>
+</center>
+<div id="loggedin">Logged in as <%= email %></div>
+<form id="logout" method="GET" action="/auth/logout"><input type="submit" value="Logout" /></form>
+<%- include('./partials/footer.ejs') %>

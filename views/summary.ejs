@@ -1,0 +1,56 @@
+<%- include('./partials/header.ejs') %>
+<h2 class="summary">Summary</h2>
+<table id="summary" align="right">
+    <thead>
+      <tr>
+        <form method="POST" action="/behavior/summary">
+        <td align="center"></td>
+        <td align="center">Week to view summary : <input type="week" name="week" value="<%= week %>"/><div class="register"><input type="submit" value="Weekly summary"/></div></td>
+        <td align="center">Month to view summary : <input type="month" name="month" value="<%= month %>"/><div class="register"><input type="submit" value="Monthly summary"/></div></td>
+        </form>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center">Average sleep duration:</td>
+        <td id="wsd" align="center"><%= avg1 %> Hours</td>
+        <td id="msd" align="center"><%= avg6 %> Hours</td>
+      </tr>
+      <tr>
+        <td align="center">Average time spent on exercising</td>
+        <td id="wset" align="center"><%= avg2 %> Hours</td>
+        <td id="mset" align="center"><%= avg7 %> Hours</td>
+      </tr>
+      <tr>
+        <td align="center">Average time spent on studying</td>
+        <td id="wst" align="center"><%= avg3 %> Hours</td>
+        <td id="mst" align="center"><%= avg8 %> Hours</td>
+      </tr>
+      <tr>
+        <td align="center">Average sleep quality</td>
+        <td id="wsq" align="center"><%= avg4 %></td>
+        <td id="msq" align="center"><%= avg9 %></td>
+      </tr>
+      <tr>
+        <td align="center">Average generic mood</td>
+        <td id="wgm" align="center"><%= avg5 %></td>
+        <td id="mgm" align="center"><%= avg10 %></td>
+      </tr>
+      <% if (nodataw || nomw) { %>
+      <tr>
+        <td align="center">Alert : </td>
+        <td id="werror" align="center"><%= nodataw %></td>
+        <td id="merror" align="center"><%= nomw %></td>
+      </tr>
+      <% } %>
+      <tr>
+        <td align="center"> </td>
+        <td align="center"><form method="GET" action="/behavior/reporting" ><input type="submit" value="Report" /></form></td>
+        <td align="center"><form method="GET" action="/landing"><input type="submit" value="Landing page" /></form></td>
+        <td align="center"> </td>
+      </tr>
+    </tbody>
+</table>
+<div id="loggedin">Logged in as <%= email %></div>
+<form id="logout" method="GET" action="/auth/logout"><input type="submit" value="Logout" /></form>
+<%- include('./partials/footer.ejs') %>
